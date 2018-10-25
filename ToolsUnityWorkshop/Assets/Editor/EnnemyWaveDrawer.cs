@@ -52,8 +52,9 @@ public class EnnemyWaveDrawer : PropertyDrawer {
 		SerializedProperty enemyAmount = property.FindPropertyRelative("enemyAmount");
 		enemyAmount.intValue = EditorGUI.IntField(rightRect, enemyAmount.intValue);
 
-		SerializedProperty enemyType = property.FindPropertyRelative("enemyType");
-		enemyType.objectReferenceValue = EditorGUI.ObjectField(middleRect, enemyType.objectReferenceValue, typeof(EnnemyParams), false);
+		SerializedProperty ennemy = property.FindPropertyRelative("ennemy");
+		ennemy.objectReferenceValue = EditorGUI.ObjectField(middleRect, ennemy.objectReferenceValue, typeof(GameObject), false);
+
 
 		EditorGUI.indentLevel = currentIndentation;
 	}

@@ -9,9 +9,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3c73c79c5294fe144ba82b682db37d97, type: 3}
-  m_Name: MyFirstBullet
+  m_Name: BulletEnemy 1
   m_EditorClassIdentifier: 
-  color: {r: 1, g: 0, b: 0, a: 1}
-  speed: 10
+  color: {r: 0.041651815, g: 0.06403599, b: 0.9811321, a: 1}
+  speed: -5
   size: 1.5
-  lifespan: 3
+  lifespan: 1.5
+  firingRate: 0.304
+  numberOfSimultaneousBullets: 5
+  amplitudeAngle: 49.6
+  isEnemyBullet: 1

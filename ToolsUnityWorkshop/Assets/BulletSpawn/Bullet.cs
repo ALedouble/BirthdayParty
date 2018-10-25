@@ -13,6 +13,9 @@ public class Bullet : MonoBehaviour {
 	public float lifespan;
 	private float timeleft;
 	public BulletParams currentParams;
+    public BulletEmitter emitter;
+    public BulletEmitterEnemy enemy;
+    public int id = 0;
 
 
 
@@ -33,6 +36,9 @@ public class Bullet : MonoBehaviour {
 	}
 	
 	public void ApplyParameters(BulletParams bp){
+        emitter.amplitudeAngle = bp.amplitudeAngle;
+        emitter.numberOfSimultaneousBullets = bp.numberOfSimultaneousBullets;
+        emitter.firingRate = bp.firingRate;
 		currentParams = bp;
 		spriteRenderer.color = bp.color;
 		self.localScale = Vector3.one * bp.size;
@@ -43,7 +49,7 @@ public class Bullet : MonoBehaviour {
 		if (isAvailable) return;
 
 		self.Translate(self.up * currentParams.speed * Time.deltaTime);
-		timeleft -= Time.deltaTime;
+        timeleft -= Time.deltaTime;
 		if (timeleft < 0) Die();
 	}
 

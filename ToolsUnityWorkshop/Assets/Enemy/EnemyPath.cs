@@ -6,7 +6,6 @@ public class EnemyPath : MonoBehaviour {
     [SerializeField]
 	public Vector3[] pathPoints;
 	public Color gizmoColor = Color.yellow;
-    public float speed = 0.000001f;
     public float reachDist = 0.5f;
 
 	public Transform self;
@@ -19,7 +18,7 @@ public class EnemyPath : MonoBehaviour {
 
         float dist = Vector3.Distance(pathPoints[currentPoint], ennemies.position);
 
-        ennemies.position = Vector3.Lerp(ennemies.position, pathPoints[currentPoint], speed * Time.deltaTime);
+        ennemies.position = Vector3.Lerp(ennemies.position, pathPoints[currentPoint], Time.deltaTime);
 
         if (dist <= reachDist)
         {

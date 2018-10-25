@@ -38,11 +38,10 @@ public class EnemyPathInspector : Editor {
 			enemyPath.self = enemyPath.transform;
 		}*/
 
-		EditorGUILayout.LabelField("Ceci est mon custom editor", EditorStyles.boldLabel);
+		EditorGUILayout.LabelField("Définition du chemin aléatoire", EditorStyles.boldLabel);
 
         EditorGUI.BeginChangeCheck();
-        int newArraySize = EditorGUILayout.IntField("Color Array Size", pathPoints.arraySize);
-        speed = EditorGUILayout.IntField(" Speed : ", speed);
+        int newArraySize = EditorGUILayout.IntField("Random Path", pathPoints.arraySize);
         if (newArraySize < 0) newArraySize = 0;
         if (EditorGUI.EndChangeCheck())
         {
@@ -97,7 +96,7 @@ public class EnemyPathInspector : Editor {
 				if(GUILayout.Button("Reset path", GUILayout.MaxWidth(200))){
 					for(int i = 0; i < enemyPath.pathPoints.Length; i++ ){
 						//enemyPath.pathPoints[i] = Vector3.zero;
-						enemyPath.pathPoints[i] = new Vector3(Random.Range(-20f, 20f), Random.Range(-20f, 20f), -8);
+						enemyPath.pathPoints[i] = new Vector3(Random.Range(-16.5f, 16.5f), Random.Range(-5f, 10.3f), -8);
 					} 
 				}
             

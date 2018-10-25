@@ -12,10 +12,21 @@ public class EnnemyBehaviour : MonoBehaviour {
 	[Header ("References")]
 	public Transform self;
 	public SpriteRenderer spriteRenderer; 
-	public BulletEmitter emitter;
+	public BulletEmitterEnemy emitter;
     public EnemyPath pathFollow;
 
 
+    void Start()
+    {
+        for (int i = 0; i < pathFollow.pathPoints.Length; i++)
+        {
+           pathFollow.pathPoints[i] = new Vector3(Random.Range(-16.5f, 16.5f), Random.Range(-5f, 10.3f), -8);
+        }
+
+        transform.position = pathFollow.pathPoints[0];
+        spriteRenderer.enabled = true;
+ 
+    }
 
 
     private void Awake(){
@@ -37,8 +48,9 @@ public class EnnemyBehaviour : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        Birth();
         if (isAvailable) return;
+
+        emitter.isEnabled = true;
     }
 
 	public void Die(){

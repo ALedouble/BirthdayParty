@@ -37,8 +37,9 @@ GameObject:
   - component: {fileID: 4756160602702726}
   - component: {fileID: 114907545375548924}
   - component: {fileID: 114315661715005584}
-  - component: {fileID: 212038576745473602}
-  - component: {fileID: 114119394775989490}
+  - component: {fileID: 114983135039675972}
+  - component: {fileID: 61780189727573104}
+  - component: {fileID: 50014702505518514}
   m_Layer: 0
   m_Name: Ennemy
   m_TagString: Untagged
@@ -66,30 +67,58 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1654528178203550}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.27, y: 5.68, z: -8}
+  m_LocalPosition: {x: 10.899833, y: 9.51809, z: -8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4723095149348974}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &114119394775989490
-MonoBehaviour:
+--- !u!50 &50014702505518514
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1654528178203550}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
+--- !u!61 &61780189727573104
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1654528178203550}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a902f78e06ed3e428b66477e3e01579, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  self: {fileID: 4756160602702726}
-  numberOfSimultaneousBullets: 3
-  amplitudeAngle: 20
-  firingRate: 0.5
-  bulletType: {fileID: 11400000, guid: 0578160dd64553e45a06878da1220abf, type: 2}
-  player: {fileID: 0}
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0
 --- !u!114 &114315661715005584
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -102,15 +131,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathPoints:
-  - {x: 17.135038, y: 1.1900063, z: -8}
-  - {x: 0.3818779, y: 15.59483, z: -8}
-  - {x: -8.190491, y: -3.6155014, z: -8}
-  - {x: -12.067443, y: 13.301782, z: -8}
-  - {x: -15.472565, y: 15.523486, z: -8}
-  - {x: -19.363445, y: -4.3763275, z: -8}
-  - {x: -3.9406376, y: -16.408848, z: -8}
+  - {x: 9.85961, y: -8.555811, z: -8}
+  - {x: -12.9107895, y: 12.551017, z: -8}
+  - {x: -17.1944, y: -1.5266209, z: -8}
+  - {x: 0.01774025, y: -10.222149, z: -8}
+  - {x: 10.671902, y: 11.830797, z: -8}
   gizmoColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  speed: 1
   reachDist: 1
   self: {fileID: 4756160602702726}
   ennemies: {fileID: 4756160602702726}
@@ -125,57 +151,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28c17e026400ea14284cf05674794ff0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentParams: {fileID: 11400000, guid: 2c32341115589e548913633c7a610510, type: 2}
+  currentParams: {fileID: 0}
   self: {fileID: 4756160602702726}
-  spriteRenderer: {fileID: 212038576745473602}
-  emitter: {fileID: 0}
+  spriteRenderer: {fileID: 212961764309282072}
+  emitter: {fileID: 114983135039675972}
   pathFollow: {fileID: 114315661715005584}
---- !u!212 &212038576745473602
-SpriteRenderer:
+--- !u!114 &114983135039675972
+MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1654528178203550}
   m_Enabled: 1
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RenderingLayerMask: 4294967295
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 5c5a0215614820a489e4d014956ffc20, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7bcf5f7b25daec408e2741a35618aea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  self: {fileID: 4756160602702726}
+  numberOfSimultaneousBullets: 2
+  amplitudeAngle: 5
+  firingRate: 0.8
+  bulletEnemy:
+  - {fileID: 11400000, guid: fb4c6fe7747c79d4bab78689800a44c9, type: 2}
+  - {fileID: 11400000, guid: 074dea1f54f0dcb498d68c7171c88a15, type: 2}
 --- !u!212 &212961764309282072
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -212,7 +210,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 5c5a0215614820a489e4d014956ffc20, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 0.5278132, g: 0, b: 0.6886792, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

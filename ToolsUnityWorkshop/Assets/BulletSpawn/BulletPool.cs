@@ -21,7 +21,6 @@ public class BulletPool : MonoBehaviour {
 
 	public Bullet CreateObject() {
 
-        Debug.Log("now trying to shoot");
 		bool isThereAnError = false;
 		if (pool == null) isThereAnError = true;
 		else if (pool.Length == 0) isThereAnError = true;
