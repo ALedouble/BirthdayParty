@@ -11,10 +11,13 @@ public class BulletEmitter : MonoBehaviour {
 	public float firingRate;
 	public BulletParams bulletType;
 
+
+    [SerializeField]
+    public Transform player;
 	[System.NonSerialized]
 	public bool isEnabled;
 
-	public void Update(){
+    public void Update(){
 		currentCooldown -= Time.deltaTime;
 
 		if (isEnabled && currentCooldown < 0){
@@ -22,9 +25,12 @@ public class BulletEmitter : MonoBehaviour {
 			EmitSingleBullet();
 		}
 
-		//if (Time.time % firingRate < Time.deltaTime)
-		//	EmitSingleBullet();
-	}
+    
+
+
+        //if (Time.time % firingRate < Time.deltaTime)
+        //	EmitSingleBullet();
+    }
 
 	public void EmitSingleBullet(){
 		float angleDifferenceBetweenBullets = 0;
@@ -37,6 +43,7 @@ public class BulletEmitter : MonoBehaviour {
 
 		for(int i = 0; i < numberOfSimultaneousBullets; i++){
 			Bullet bullet = BulletPool.instance.CreateObject();
+            bullet.self.position = Vector3.up;
 
 			// Orienter le projectile
 			bullet.self.position = self.position;
@@ -51,9 +58,7 @@ public class BulletEmitter : MonoBehaviour {
 
 
 	// Use this for initialization
-	void Start () {
-		
-	}
+	
 
 }
 

@@ -13,6 +13,7 @@ public class EnemyPathInspector : Editor {
 	Color gizmosColor = Color.yellow;
 	bool foldout;
     SerializedProperty pathPoints;
+    int speed;
 
 	private void OnEnable(){
 		foldout = false;
@@ -28,7 +29,8 @@ public class EnemyPathInspector : Editor {
 		if (foldout){
 			EditorGUI.indentLevel++;
 			enemyPath.self = EditorGUILayout.ObjectField("Self", enemyPath.self, typeof(Transform), true) as Transform;
-			EditorGUI.indentLevel--;
+            enemyPath.ennemies = EditorGUILayout.ObjectField("Enemy", enemyPath.ennemies, typeof(Transform), true) as Transform;
+            EditorGUI.indentLevel--;
 		}
 
 
@@ -40,6 +42,7 @@ public class EnemyPathInspector : Editor {
 
         EditorGUI.BeginChangeCheck();
         int newArraySize = EditorGUILayout.IntField("Color Array Size", pathPoints.arraySize);
+        speed = EditorGUILayout.IntField(" Speed : ", speed);
         if (newArraySize < 0) newArraySize = 0;
         if (EditorGUI.EndChangeCheck())
         {

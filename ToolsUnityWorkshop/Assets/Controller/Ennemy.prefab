@@ -85,10 +85,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   self: {fileID: 4756160602702726}
-  numberOfSimultaneousBullets: 0
-  amplitudeAngle: 0
-  firingRate: 0
-  bulletType: {fileID: 0}
+  numberOfSimultaneousBullets: 3
+  amplitudeAngle: 20
+  firingRate: 0.5
+  bulletType: {fileID: 11400000, guid: 0578160dd64553e45a06878da1220abf, type: 2}
+  player: {fileID: 0}
 --- !u!114 &114315661715005584
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -101,15 +102,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathPoints:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
+  - {x: 17.135038, y: 1.1900063, z: -8}
+  - {x: 0.3818779, y: 15.59483, z: -8}
+  - {x: -8.190491, y: -3.6155014, z: -8}
+  - {x: -12.067443, y: 13.301782, z: -8}
+  - {x: -15.472565, y: 15.523486, z: -8}
+  - {x: -19.363445, y: -4.3763275, z: -8}
+  - {x: -3.9406376, y: -16.408848, z: -8}
   gizmoColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
+  speed: 1
+  reachDist: 1
   self: {fileID: 4756160602702726}
+  ennemies: {fileID: 4756160602702726}
 --- !u!114 &114907545375548924
 MonoBehaviour:
   m_ObjectHideFlags: 1
