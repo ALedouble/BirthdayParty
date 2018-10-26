@@ -36,10 +36,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4756160602702726}
   - component: {fileID: 114907545375548924}
-  - component: {fileID: 114315661715005584}
   - component: {fileID: 114983135039675972}
   - component: {fileID: 61780189727573104}
   - component: {fileID: 50014702505518514}
+  - component: {fileID: 114717299664783214}
   m_Layer: 0
   m_Name: Ennemy
   m_TagString: Untagged
@@ -67,7 +67,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1654528178203550}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -3.9161272, y: -1.9013125, z: -8}
+  m_LocalPosition: {x: -5.368041, y: 3.302781, z: -8.000004}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4723095149348974}
@@ -119,7 +119,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.5, y: 1}
   m_EdgeRadius: 0
---- !u!114 &114315661715005584
+--- !u!114 &114717299664783214
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -131,15 +131,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pathPoints:
-  - {x: 9.85961, y: -8.555811, z: -8}
-  - {x: -12.9107895, y: 12.551017, z: -8}
-  - {x: -17.1944, y: -1.5266209, z: -8}
-  - {x: 0.01774025, y: -10.222149, z: -8}
-  - {x: 10.671902, y: 11.830797, z: -8}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
   gizmoColor: {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  reachDist: 1
+  reachDist: 0.5
   self: {fileID: 4756160602702726}
   ennemies: {fileID: 4756160602702726}
+  currentPoint: 0
 --- !u!114 &114907545375548924
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -155,7 +156,8 @@ MonoBehaviour:
   self: {fileID: 4756160602702726}
   spriteRenderer: {fileID: 212961764309282072}
   emitter: {fileID: 114983135039675972}
-  pathFollow: {fileID: 114315661715005584}
+  pathFollow: {fileID: 114717299664783214}
+  randomPath: 1
 --- !u!114 &114983135039675972
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -173,7 +175,8 @@ MonoBehaviour:
   firingRate: 0.8
   bulletEnemy:
   - {fileID: 11400000, guid: fb4c6fe7747c79d4bab78689800a44c9, type: 2}
-  - {fileID: 11400000, guid: 074dea1f54f0dcb498d68c7171c88a15, type: 2}
+  - {fileID: 11400000, guid: a6a5ef98cdf79994f9c59d680db45d66, type: 2}
+  - {fileID: 11400000, guid: e78adbe00a65235458190ebf1f4914f9, type: 2}
 --- !u!212 &212961764309282072
 SpriteRenderer:
   m_ObjectHideFlags: 1

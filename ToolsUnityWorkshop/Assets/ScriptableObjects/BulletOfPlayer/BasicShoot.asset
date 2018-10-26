@@ -14,8 +14,8 @@ MonoBehaviour:
   color: {r: 0.99054277, g: 1, b: 0, a: 1}
   speed: 12
   size: 1.5
-  lifespan: 1.5
+  lifespan: 2.21
   firingRate: 0.4
-  numberOfSimultaneousBullets: 4
-  amplitudeAngle: 10
+  numberOfSimultaneousBullets: 1
+  amplitudeAngle: 5
   isEnemyBullet: 0

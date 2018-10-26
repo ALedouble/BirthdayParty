@@ -14,16 +14,33 @@ public class EnnemyBehaviour : MonoBehaviour {
 	public SpriteRenderer spriteRenderer; 
 	public BulletEmitterEnemy emitter;
     public EnemyPath pathFollow;
+    public bool randomPath;
+    
 
 
     void Start()
     {
-        for (int i = 0; i < pathFollow.pathPoints.Length; i++)
-        {
-           pathFollow.pathPoints[i] = new Vector3(Random.Range(-16.5f, 16.5f), Random.Range(-5f, 10.3f), -8);
+        if (randomPath) { 
+            for (int i = 0; i < pathFollow.pathPoints.Length; i++)
+            {
+               pathFollow.pathPoints[i] = new Vector3(Random.Range(-16.5f, 16.5f), Random.Range(-5f, 10.3f), -8);
+               transform.position = pathFollow.pathPoints[0];
+            }
         }
 
-        transform.position = pathFollow.pathPoints[0];
+        GameObject enemySpawner = GameObject.Find("EnnemySpawner");
+        if (!randomPath)
+        {
+           pathFollow.currentPoint = Random.Range(0, pathFollow.pathPoints.Length);
+            for (int i = 0; i < pathFollow.pathPoints.Length; i++)
+            {
+                pathFollow.pathPoints[i] = enemySpawner.GetComponent<EnemyPath>().pathPoints[i];
+                transform.position = pathFollow.pathPoints[pathFollow.currentPoint];
+            }
+        }
+
+
+        
         spriteRenderer.enabled = true;
  
     }

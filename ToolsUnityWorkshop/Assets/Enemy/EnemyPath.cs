@@ -3,19 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyPath : MonoBehaviour {
+
     [SerializeField]
 	public Vector3[] pathPoints;
 	public Color gizmoColor = Color.yellow;
     public float reachDist = 0.5f;
 
-	public Transform self;
+    public Transform self;
     public Transform ennemies;
-    int currentPoint = 0;
     private Transform pathTransfom;
+
+    public int currentPoint = 0;
 
     void Update()
     {
-
+        
         float dist = Vector3.Distance(pathPoints[currentPoint], ennemies.position);
 
         ennemies.position = Vector3.Lerp(ennemies.position, pathPoints[currentPoint], Time.deltaTime);

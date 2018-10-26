@@ -117,7 +117,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.69, y: 0.71}
+  m_Size: {x: 1, y: 1.5}
   m_EdgeRadius: 0
 --- !u!114 &114115453619082578
 MonoBehaviour:
@@ -154,7 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   self: {fileID: 4597324647537734}
-  numberOfSimultaneousBullets: 5
+  numberOfSimultaneousBullets: 3
   amplitudeAngle: 49.6
   firingRate: 0.304
   bulletType:
@@ -173,7 +173,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idBullet: {fileID: 114020177481819162, guid: af68aa812d2e7044db8c5d0472f97ff7, type: 2}
-  characterType: 0
 --- !u!212 &212768890971753726
 SpriteRenderer:
   m_ObjectHideFlags: 1

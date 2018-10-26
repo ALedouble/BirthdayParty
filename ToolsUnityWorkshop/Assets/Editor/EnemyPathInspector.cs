@@ -38,10 +38,10 @@ public class EnemyPathInspector : Editor {
 			enemyPath.self = enemyPath.transform;
 		}*/
 
-		EditorGUILayout.LabelField("Définition du chemin aléatoire", EditorStyles.boldLabel);
+		EditorGUILayout.LabelField("Définition du chemin de la vague 1", EditorStyles.boldLabel);
 
         EditorGUI.BeginChangeCheck();
-        int newArraySize = EditorGUILayout.IntField("Random Path", pathPoints.arraySize);
+        int newArraySize = EditorGUILayout.IntField("Points du path", pathPoints.arraySize);
         if (newArraySize < 0) newArraySize = 0;
         if (EditorGUI.EndChangeCheck())
         {
@@ -75,9 +75,17 @@ public class EnemyPathInspector : Editor {
 		GUIStyle textStyle = new GUIStyle(EditorStyles.label);
 		textStyle.alignment = TextAnchor.MiddleCenter;
 		textStyle.normal.textColor = Color.white;
+        textStyle.fontSize = 10;
 
         /**/
         for (int i = 0; i < enemyPath.pathPoints.Length; i++){
+            if (enemyPath.pathPoints[i].x > 18 && enemyPath.pathPoints[i].x > -18) enemyPath.pathPoints[i].x = 18;
+            if (enemyPath.pathPoints[i].x < -18) enemyPath.pathPoints[i].x = -18;
+
+            if (enemyPath.pathPoints[i].y > 10 ) enemyPath.pathPoints[i].y = 10;
+            if (enemyPath.pathPoints[i].y < -1) enemyPath.pathPoints[i].y = -1;
+
+            enemyPath.pathPoints[i].z = -8;
 			enemyPath.pathPoints[i] = Handles.FreeMoveHandle(enemyPath.pathPoints[i], Quaternion.identity, handleSize, Vector3.zero, Handles.SphereHandleCap);
 			//enemyPath.pathPoints[i] = Handles.PositionHandle(enemyPath.pathPoints[i], enemyPath.self.rotation);
 			Handles.Label(enemyPath.pathPoints[i], "Point #" + i.ToString(), textStyle);
@@ -92,13 +100,8 @@ public class EnemyPathInspector : Editor {
 
 		Handles.BeginGUI();
 			GUILayout.BeginArea(new Rect(100, 20, 400, 200));
-				GUILayout.Label("Hello World", textStyle);
-				if(GUILayout.Button("Reset path", GUILayout.MaxWidth(200))){
-					for(int i = 0; i < enemyPath.pathPoints.Length; i++ ){
-						//enemyPath.pathPoints[i] = Vector3.zero;
-						enemyPath.pathPoints[i] = new Vector3(Random.Range(-16.5f, 16.5f), Random.Range(-5f, 10.3f), -8);
-					} 
-				}
+				GUILayout.Label("Les modifications du path ne sont pas prises en compte en jeu!! ", textStyle);
+				
             
             GUILayout.EndArea();
 

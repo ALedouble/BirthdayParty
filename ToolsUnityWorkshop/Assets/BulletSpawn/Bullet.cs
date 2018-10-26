@@ -6,17 +6,24 @@ public class Bullet : MonoBehaviour {
 
 	[System.NonSerialized]
 	public bool isAvailable;
+
+    [Header("References")]
 	public Transform self;
 	public SpriteRenderer spriteRenderer;
+    public CircleCollider2D collid;
 
-	public float speed;
+    [Header("Values")]
+    public float speed;
 	public float lifespan;
 	private float timeleft;
-	public BulletParams currentParams;
-    public BulletEmitter emitter;
-    public BulletEmitterEnemy enemy;
     public int id = 0;
 
+    [Header("Scripts")]
+    public BulletParams currentParams;
+    public BulletEmitter emitter;
+    public BulletEmitterEnemy enemy;
+    
+   
 
 
 
@@ -30,22 +37,28 @@ public class Bullet : MonoBehaviour {
 	}
 
 	public void Birth(){
-		timeleft = currentParams.lifespan;
-		spriteRenderer.enabled = true;
-		isAvailable = false;
+        if (self != null)
+        {
+            timeleft = currentParams.lifespan;
+            spriteRenderer.enabled = true;
+            collid.enabled = true;
+            isAvailable = false;
+        }
 	}
 	
 	public void ApplyParameters(BulletParams bp){
-        emitter.amplitudeAngle = bp.amplitudeAngle;
-        emitter.numberOfSimultaneousBullets = bp.numberOfSimultaneousBullets;
-        emitter.firingRate = bp.firingRate;
-		currentParams = bp;
-		spriteRenderer.color = bp.color;
-		self.localScale = Vector3.one * bp.size;
-	}
+        if (self != null) { 
+            emitter.amplitudeAngle = bp.amplitudeAngle;
+            emitter.numberOfSimultaneousBullets = bp.numberOfSimultaneousBullets;
+            emitter.firingRate = bp.firingRate;
+		    currentParams = bp;
+		    spriteRenderer.color = bp.color;
+		    self.localScale = Vector3.one * bp.size;
+        }
+    }
 
 	// Update is called once per frame
-	void Update () {
+	void Update() {
 		if (isAvailable) return;
 
 		self.Translate(self.up * currentParams.speed * Time.deltaTime);
@@ -55,6 +68,7 @@ public class Bullet : MonoBehaviour {
 
 	public void Die(){
 		spriteRenderer.enabled = false;
+        collid.enabled = false;
 		isAvailable = true;
 	}
 }

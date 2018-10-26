@@ -14,7 +14,7 @@ public class BulletParams : ScriptableObject {
 	public float size;
     [Range(1f, 10f)]
     public float lifespan;
-    [Range(0.1f, 1f)]
+    [Range(0.1f, 60f)]
     public float firingRate;
     [Range(1, 20)]
     public int numberOfSimultaneousBullets;

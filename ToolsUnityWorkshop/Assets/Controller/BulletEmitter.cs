@@ -4,43 +4,58 @@ using UnityEngine;
 
 public class BulletEmitter : MonoBehaviour {
 
-	public Transform self;
-	public int numberOfSimultaneousBullets;
+    [Header("Reference")]
+    public Transform self;
+
+    [Header("Values")]
+    public int numberOfSimultaneousBullets;
 	public float amplitudeAngle;
 	private float currentCooldown;
 	public float firingRate;
-	public BulletParams[] bulletType;
     private int currentParams;
     public bool isEnemyBullet = false;
+
+    [Header("Array")]
+    public BulletParams[] bulletType;
+
+
+
 
     [System.NonSerialized]
 	public bool isEnabled;
 
 
-    public void Update(){
-		currentCooldown -= Time.deltaTime;
+
+    void Start()
+    {
+        
+    }
+
+    public void Update()
+    { 
+        currentCooldown -= Time.deltaTime;
 
         if (isEnabled && currentCooldown < 0)
         {
-            currentCooldown = firingRate;
+            currentCooldown = bulletType[currentParams].firingRate;
             EmitSingleBullet();
         }
+
         if (Input.GetMouseButtonUp(1))
         {
             if (currentParams >= 0 && currentParams < bulletType.Length - 1)
             {
                 currentParams += 1;
+               
+                currentCooldown = bulletType[currentParams].firingRate;
             }
             else
             {
                 currentParams = 0;
+                currentCooldown = 0;
             }
  
         }
-       
-       
-        //if (Time.time % firingRate < Time.deltaTime)
-        //	EmitSingleBullet();
     }
 
 
@@ -51,23 +66,27 @@ public class BulletEmitter : MonoBehaviour {
 	}
 
 	float angleOfFirstBullet = -0.5f * bulletType[currentParams].amplitudeAngle;
-		
-	for(int i = 0; i < bulletType[currentParams].numberOfSimultaneousBullets; i++)
+
+        for (int i = 0; i < bulletType[currentParams].numberOfSimultaneousBullets; i++)
         {
-		    Bullet bullet = BulletPool.instance.CreateObject();
+            Bullet bullet = BulletPool.instance.CreateObject();
 
-            bullet.self.position = Vector3.up;
-            bullet.id = 0;
+            if (bullet != null)
+            { 
+                bullet.self.position = Vector3.up;
+                bullet.id = 0;
 
-            // Orienter le projectile
-            bullet.self.position = self.position;
-		    bullet.self.eulerAngles = new Vector3(0, 0, angleOfFirstBullet + i * angleDifferenceBetweenBullets);
 
+                // Orienter le projectile
+                bullet.self.position = self.position;
+                bullet.self.eulerAngles = new Vector3(0, 0, angleOfFirstBullet + i * angleDifferenceBetweenBullets);
+            }
 
             bullet.ApplyParameters(bulletType[currentParams]);
 
 		    bullet.Birth();
-	    }
+            
+        }
 
 
 

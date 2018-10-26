@@ -5,14 +5,20 @@ using UnityEngine;
 public class BulletEmitterEnemy : MonoBehaviour
 {
 
+    [Header("Reference")]
     public Transform self;
+
+    [Header("Values")]
     public int numberOfSimultaneousBullets;
     public float amplitudeAngle;
     private float currentCooldown;
     public float firingRate;
-    public BulletParams[] bulletEnemy;
     int currentParams = 0;
     bool isEnemyBullet = true;
+
+    [Header("Array")]
+    public BulletParams[] bulletEnemy;
+
    
     [System.NonSerialized]
     public bool isEnabled = true;
@@ -24,14 +30,15 @@ public class BulletEmitterEnemy : MonoBehaviour
 
     void Update()
     {
-        bulletEnemy[currentParams].speed = -5;
+        bulletEnemy[currentParams].speed = -8;
         currentCooldown -= Time.deltaTime;
 
         if (isEnabled && currentCooldown < 0 )
         {
-            currentCooldown = firingRate;
+            currentCooldown = bulletEnemy[EnnemyWave.instance.wave].firingRate; 
             EmitSingleBullet();  
         }
+
     }
 
 
@@ -50,18 +57,22 @@ public class BulletEmitterEnemy : MonoBehaviour
         {
             Bullet bullet = BulletPool.instance.CreateObject();
 
-            bullet.self.position = Vector3.up;
-            bullet.id = 1;
+            if (bullet != null)
+            {
+                bullet.self.position = Vector3.up;
+                bullet.id = 1;
 
-            // Orienter le projectile
-            bullet.self.position = self.position;
-            bullet.self.eulerAngles = new Vector3(0, 0, angleOfFirstBullet + i * angleDifferenceBetweenBullets);
+                // Orienter le projectile
+                bullet.self.position = self.position;
+                bullet.self.eulerAngles = new Vector3(0, 0, angleOfFirstBullet + i * angleDifferenceBetweenBullets);
+            }
 
             bulletEnemy[EnnemyWave.instance.wave].isEnemyBullet = true;
 
             bullet.ApplyParameters(bulletEnemy[EnnemyWave.instance.wave]);
 
             bullet.Birth();
+           
         }
     }
 }

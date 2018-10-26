@@ -13,9 +13,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   color: {r: 0, g: 0.13428664, b: 1, a: 1}
   speed: 6
-  size: 3
+  size: 1.5
   lifespan: 7
-  firingRate: 1
-  numberOfSimultaneousBullets: 7
-  amplitudeAngle: 66.9
+  firingRate: 0.9
+  numberOfSimultaneousBullets: 20
+  amplitudeAngle: 90
   isEnemyBullet: 1

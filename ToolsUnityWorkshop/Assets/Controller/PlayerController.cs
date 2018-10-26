@@ -17,19 +17,20 @@ public class PlayerController : MonoBehaviour {
 	public Transform self;
 	public Transform bottomLeftCorner, topRightCorner;
 
-	public BulletEmitter emitter;
+    [Header("Script")]
+    public BulletEmitter emitter;
 
 	// Use this for initialization
 	void Start () {
-		
-	}
+        
+    }
 	
 	// Update is called once per frame
 	void Update () {
 		UpdateMovement();
 		UpdateShoot();
 		UpdateAnimation();
-	}
+    }
 
 	void UpdateMovement(){
 		Vector2 movement = Vector2.zero;

@@ -9,6 +9,8 @@ public enum QuestType { KillMonsters, Survival, DodgeBullets }
 [CreateAssetMenu(fileName = "NewQuest.asset", menuName = "Quest", order = 100)]
 public class QuestObject : ScriptableObject {
 
+    public static QuestObject instance;
+
     public int index;
     public string title;
     [Multiline]

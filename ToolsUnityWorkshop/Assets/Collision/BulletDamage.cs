@@ -7,36 +7,25 @@ using UnityEngine;
 
 public class BulletDamage : MonoBehaviour {
     BulletParams bp;
+
+    [Header("Script")]
     public Bullet idBullet;
 
-    public enum stateType
-    {
-        Player,
-        Enemy,
-    }
 
-    public stateType characterType;
-
-
-    // Use this for initialization
-    void Start () {
-	}
-	
-	// Update is called once per frame
-	void Update () {
- 
-	}
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-            if (collision.gameObject.name == "Player" && idBullet.id == 1)
-            {
-                Debug.Log("outch");
-            }
+       if (collision.gameObject.name == "Player" && idBullet.id == 1)
+       {
+           Destroy(this.gameObject);
+            StatsManager.lifeValue -= 10;
+       }
 
         if (collision.gameObject.name == "Ennemy(Clone)" && idBullet.id == 0)
         {
-            Debug.Log("héhé");
+            StatsManager.scoreValue += 10;
+            Destroy(this.gameObject);
+            Destroy(collision.gameObject);
         }
     }
 
